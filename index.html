@@ -498,6 +498,16 @@ function readURLParams() {
 	}
 }
 
+	
+function setURLParams() 
+{
+	const params = new URLSearchParams();
+	params.set("year", viewYear);
+	params.set("month", republicanMonthsURL[viewMonth]);
+	const newURL = `${window.location.pathname}?${params.toString()}`;
+	window.history.replaceState({}, "", newURL);
+}
+	
 function renderCalendar() {
 
 	const calendarDiv = document.getElementById("calendar");
@@ -529,6 +539,8 @@ function renderCalendar() {
 
 	document.getElementById("monthTitle").innerText = monthTitle
 
+	setURLParams();
+	
 	if (viewMonth === 12) {
 		let maxDays = 5;
 		if (viewYear % 4 === 0) maxDays = 6;
@@ -593,15 +605,6 @@ function renderCalendar() {
 		`;
 		
 		calendarDiv.appendChild(div);
-	}
-	
-	// set Url
-	{
-		const params = new URLSearchParams();
-		params.set("year", viewYear);
-		params.set("month", republicanMonthsURL[viewMonth]);
-		const newURL = `${window.location.pathname}?${params.toString()}`;
-		window.history.replaceState({}, "", newURL);
 	}
 }
 
