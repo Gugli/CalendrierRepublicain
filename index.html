@@ -6,110 +6,110 @@
 <title>Calendrier Républicain</title>
 <style>
 body {
-    margin: 0;
+	margin: 0;
 	font-family: Georgia, Times, Times New Roman, serif;
-    background: #f3e7c9;
-    color: #2b2b2b;
-    text-align: center;
+	background: #f3e7c9;
+	color: #2b2b2b;
+	text-align: center;
 }
 
 header {
-    background: #7a0000;
-    color: #fff;
-    padding: 15px;
-    font-size: 22px;
-    letter-spacing: 2px;
+	background: #7a0000;
+	color: #fff;
+	padding: 15px;
+	font-size: 22px;
+	letter-spacing: 2px;
 }
 
 h2 {
-    margin: 15px 0 5px 0;
+	margin: 15px 0 5px 0;
 }
 
 .nav {
-    margin: 10px;
+	margin: 10px;
 }
 
 button {
-    background: #7a0000;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    margin: 5px;
-    cursor: pointer;
-    font-family: inherit;
+	background: #7a0000;
+	color: white;
+	border: none;
+	padding: 8px 14px;
+	margin: 5px;
+	cursor: pointer;
+	font-family: inherit;
 }
 
 button:hover {
-    background: #a00000;
+	background: #a00000;
 }
 
 .calendar {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 8px;
-    max-width: 1000px;
-    margin: 20px auto;
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	gap: 8px;
+	max-width: 1000px;
+	margin: 20px auto;
 }
 .day {
-    background: #fffaf0;
-    border: 1px solid #bfa76a;
-    padding: 8px;
-    min-height: 70px;
-    position: relative;
+	background: #fffaf0;
+	border: 1px solid #bfa76a;
+	padding: 8px;
+	min-height: 70px;
+	position: relative;
 }
 
 .day-number {
-    font-weight: bold;
-    font-size: 16px;
+	font-weight: bold;
+	font-size: 16px;
 }
 
 .decade-name {
-    font-size: 11px;
-    color: #7a0000;
+	font-size: 11px;
+	color: #7a0000;
 }
 
 .moon {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    font-size: 15px;
-    filter: grayscale(30%);
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	font-size: 15px;
+	filter: grayscale(30%);
 }
 .ephemeride {
-    font-size: 12px;
-    margin-top: 4px;
+	font-size: 12px;
+	margin-top: 4px;
 }
 
 .today {
-    border: 2px solid #d40000;
-    background: #ffe4e1;
+	border: 2px solid #d40000;
+	background: #ffe4e1;
 }
 
 .animal {
-    border: 1px solid #00d400;
-    background: #e4ffe1;
+	border: 1px solid #00d400;
+	background: #e4ffe1;
 }
 
 .outil {
-    border: 1px solid #d4d400;
-    background: #ffffe1;
+	border: 1px solid #d4d400;
+	background: #ffffe1;
 }
 
 .footer-note {
-    margin: 20px;
-    font-size: 12px;
+	margin: 20px;
+	font-size: 12px;
 }
 
 .decade-header {
-    display: contents;
+	display: contents;
 }
 
 .decade-cell {
-    font-weight: bold;
-    text-align: center;
-    padding: 6px;
-    background: #eee;
-    border-bottom: 2px solid #333;
+	font-weight: bold;
+	text-align: center;
+	padding: 6px;
+	background: #eee;
+	border-bottom: 2px solid #333;
 }
 
 /* =========================
@@ -118,63 +118,63 @@ button:hover {
 
 @media (max-width: 768px) {
 
-    body {
-        text-align: left;
-    }
+	body {
+		text-align: left;
+	}
 
-    header {
-        font-size: 18px;
-        padding: 12px;
-        text-align: center;
-    }
+	header {
+		font-size: 18px;
+		padding: 12px;
+		text-align: center;
+	}
 
-    h2 {
-        font-size: 18px;
-        text-align: center;
-    }
+	h2 {
+		font-size: 18px;
+		text-align: center;
+	}
 
-    .nav {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
+	.nav {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
 
-    button {
-        flex: 1 1 auto;
-        min-width: 110px;
-    }
+	button {
+		flex: 1 1 auto;
+		min-width: 110px;
+	}
 
-    /* Calendrier en colonne unique */
-    .calendar {
-        grid-template-columns: 1fr;
-        max-width: 100%;
-        margin: 10px;
-    }
+	/* Calendrier en colonne unique */
+	.calendar {
+		grid-template-columns: 1fr;
+		max-width: 100%;
+		margin: 10px;
+	}
 
-    /* On masque l’en-tête des décades */
-    .decade-header,
-    .decade-cell {
-        display: none;
-    }
+	/* On masque l’en-tête des décades */
+	.decade-header,
+	.decade-cell {
+		display: none;
+	}
 
-    .day {
-        min-height: auto;
-        padding: 12px;
-        border-radius: 6px;
-    }
+	.day {
+		min-height: auto;
+		padding: 12px;
+		border-radius: 6px;
+	}
 
-    .day-number {
-        font-size: 18px;
-    }
+	.day-number {
+		font-size: 18px;
+	}
 
-    .ephemeride {
-        font-size: 14px;
-    }
+	.ephemeride {
+		font-size: 14px;
+	}
 
-    .moon {
-        font-size: 18px;
-    }
+	.moon {
+		font-size: 18px;
+	}
 }
 </style>
 </head>
@@ -187,9 +187,9 @@ CALENDRIER RÉPUBLICAIN FRANÇAIS
 <h2 id="monthTitle"></h2>
 
 <div class="nav">
-    <button onclick="changeMonth(-1)">◀ Mois précédent</button>
-    <button onclick="goToday()">Aujourd'hui</button>
-    <button onclick="changeMonth(1)">Mois suivant ▶</button>
+	<button onclick="changeMonth(-1)">◀ Mois précédent</button>
+	<button onclick="goToday()">Aujourd'hui</button>
+	<button onclick="changeMonth(1)">Mois suivant ▶</button>
 </div>
 
 <div class="calendar" id="calendar"></div>
@@ -206,6 +206,14 @@ const republicanMonths = [
 "Germinal","Floréal","Prairial",
 "Messidor","Thermidor","Fructidor",
 "Sans-culottides"
+];
+
+const republicanMonthsURL = [
+"vendemiaire","brumaire","frimaire",
+"nivose","pluviose","ventose",
+"germinal","floreal","prairial",
+"messidor","thermidor","fructidor",
+"sansculottides"
 ];
 
 const decadeNames = [
@@ -246,7 +254,7 @@ const republicanDays = [
 "Pierre à plâtre","Sel","Fer","Cuivre","Chat","Étain","Plomb","Zinc","Mercure","Crible",
 
 /* Pluviôse */
-"Lauréole","Mousse","Fragon","Perce-neige","Taureau","Laurier-thym","Amadouvier","Mézéréon","Peuplier","Coignée",
+"Lauréole","Mousse","Fragon","Perce-neige","Taureau","Laurier-tin","Amadouvier","Mézéréon","Peuplier","Coignée",
 "Ellébore","Brocoli","Laurier","Avelinier","Vache","Buis","Lichen","If","Pulmonaire","Serpette",
 "Thlaspi","Thymelé","Chiendent","Trainasse","Lièvre","Guède","Noisetier","Cyclamen","Chélidoine","Traîneau",
 
@@ -414,53 +422,59 @@ const republicanDaysWiki = [
 // Calcul phase lunaire (approximation fiable)
 function getMoonPhase(date) {
 
-    const lunarCycle = 29.53058867;
-    const knownNewMoon = new Date(2000, 0, 6, 18, 14); 
-    // Nouvelle lune de référence : 6 janvier 2000
+	const lunarCycle = 29.53058867;
+	const knownNewMoon = new Date(Date.UTC(2000, 0, 6, 18, 14));
+	// Nouvelle lune de référence : 6 janvier 2000
 
-    const diffDays = (date - knownNewMoon) / (1000*60*60*24);
-    const phase = (diffDays % lunarCycle + lunarCycle) % lunarCycle;
+	const diffDays = (date - knownNewMoon) / (1000*60*60*24);
+	const phase = (diffDays % lunarCycle + lunarCycle) % lunarCycle;
 
-    if (phase < 1.84566) return "🌑";        // Nouvelle lune
-    if (phase < 5.53699) return "🌒";
-    if (phase < 9.22831) return "🌓";
-    if (phase < 12.91963) return "🌔";
-    if (phase < 16.61096) return "🌕";       // Pleine lune
-    if (phase < 20.30228) return "🌖";
-    if (phase < 23.99361) return "🌗";
-    if (phase < 27.68493) return "🌘";
+	if (phase < 1.84566) return "🌑";		// Nouvelle lune
+	if (phase < 5.53699) return "🌒";
+	if (phase < 9.22831) return "🌓";
+	if (phase < 12.91963) return "🌔";
+	if (phase < 16.61096) return "🌕";		// Pleine lune
+	if (phase < 20.30228) return "🌖";
+	if (phase < 23.99361) return "🌗";
+	if (phase < 27.68493) return "🌘";
 
-    return "🌑";
+	return "🌑";
 }
 
 function scrollToToday() {
-    const todayElem = document.querySelector('.today');
-    if (todayElem) {
-        // On centre verticalement
-        todayElem.scrollIntoView({ block: 'center' });
-    }
+	const todayElem = document.querySelector('.today');
+	if (todayElem) {
+		// On centre verticalement
+		todayElem.scrollIntoView({ block: 'center' });
+	}
 }
 
 // Base conversion simplifiée
 function gregorianToRepublican(date) {
-    const startDate = new Date(1792, 8, 22);
-    const diffTime = date - startDate;
-    const diffDays = Math.floor(diffTime / (1000*60*60*24));
+	const startDate = Date.UTC(1792, 8, 22);
+	const utcDate = Date.UTC(
+		date.getFullYear(),
+		date.getMonth(),
+		date.getDate()
+	);
 
-    const republicanYear = Math.floor(diffDays / 365.25) + 1;
-    let dayOfYear = Math.floor(diffDays % 365.25);
+	const diffTime = utcDate - startDate;
+	const diffDays = Math.floor(diffTime / (1000*60*60*24));
 
-    if (dayOfYear < 0) dayOfYear += 365;
+	const republicanYear = Math.floor(diffDays / 365.25) + 1;
+	let dayOfYear = Math.floor(diffDays % 365.25);
 
-    let month = Math.floor(dayOfYear / 30);
-    let day = (dayOfYear % 30) + 1;
+	if (dayOfYear < 0) dayOfYear += 365;
 
-    if (month >= 12) {
-        month = 12;
-        day = dayOfYear - 360 + 1;
-    }
+	let month = Math.floor(dayOfYear / 30);
+	let day = (dayOfYear % 30) + 1;
 
-    return { year: republicanYear, month, day };
+	if (month >= 12) {
+		month = 12;
+		day = dayOfYear - 360 + 1;
+	}
+
+	return { year: republicanYear, month, day };
 }
 
 let todayDate = new Date();
@@ -468,10 +482,26 @@ let currentRep = gregorianToRepublican(todayDate);
 let viewMonth = currentRep.month;
 let viewYear = currentRep.year;
 
+function readURLParams() {
+	const params = new URLSearchParams(window.location.search);
+
+	const y = parseInt(params.get("year"));
+	const m = params.get("month");
+
+	if (!isNaN(y) && m) {
+		viewYear = y;
+		viewMonth = "vendemiaire";
+		const monthIndex = republicanMonthsURL.indexOf(m.toLowerCase());
+		if (monthIndex !== -1) {
+			viewMonth = monthIndex;
+		}
+	}
+}
+
 function renderCalendar() {
 
-    const calendarDiv = document.getElementById("calendar");
-    calendarDiv.innerHTML = "";
+	const calendarDiv = document.getElementById("calendar");
+	calendarDiv.innerHTML = "";
 
 	// Ligne header des décades
 	const headerRow = document.createElement("div");
@@ -486,10 +516,10 @@ function renderCalendar() {
 
 	calendarDiv.appendChild(headerRow);
 
-	iTodayDay = 30*currentRep.month + currentRep.day - 1;
-	todayTitle = currentRep.day + " " + republicanMonths[currentRep.month] + ", jour " + republicanDaysArticle[iTodayDay] + republicanDays[iTodayDay] + " - An " + viewYear;
+	let iTodayDay = 30*currentRep.month + currentRep.day - 1;
+	let todayTitle = currentRep.day + " " + republicanMonths[currentRep.month] + ", jour " + republicanDaysArticle[iTodayDay] + republicanDays[iTodayDay] + " - An " + viewYear;
 
-	monthTitle = republicanMonths[viewMonth] + " - An " + viewYear;
+	let monthTitle = republicanMonths[viewMonth] + " - An " + viewYear;
 	
 	if(viewYear === currentRep.year && viewMonth === currentRep.month) {
 		monthTitle = "Ce jour : " + todayTitle
@@ -497,42 +527,42 @@ function renderCalendar() {
 
 	document.title = `Calendrier Républicain - ${todayTitle}`;
 
-    document.getElementById("monthTitle").innerText = monthTitle
+	document.getElementById("monthTitle").innerText = monthTitle
 
-    if (viewMonth === 12) {
-        let maxDays = 5;
-        if (viewYear % 4 === 0) maxDays = 6;
+	if (viewMonth === 12) {
+		let maxDays = 5;
+		if (viewYear % 4 === 0) maxDays = 6;
 
-        for (let i = 1; i <= maxDays; i++) {
-            const div = document.createElement("div");
-            div.classList.add("day");
+		for (let i = 1; i <= maxDays; i++) {
+			const div = document.createElement("div");
+			div.classList.add("day");
 
-            if (viewYear === currentRep.year &&
-                viewMonth === currentRep.month &&
-                i === currentRep.day) {
-                div.classList.add("today");
-            }
+			if (viewYear === currentRep.year &&
+				viewMonth === currentRep.month &&
+				i === currentRep.day) {
+				div.classList.add("today");
+			}
 
-            div.innerHTML = `
-                <div class="day-number">${i}</div>
-                <div class="ephemeride"><a href="https://fr.wikipedia.org/wiki/Jour_compl%C3%A9mentaire">${sansculottides[i-1]}</a></div>
-            `;
+			div.innerHTML = `
+				<div class="day-number">${i}</div>
+				<div class="ephemeride"><a href="https://fr.wikipedia.org/wiki/Jour_compl%C3%A9mentaire">${sansculottides[i-1]}</a></div>
+			`;
 
-            calendarDiv.appendChild(div);
-        }
-        return;
-    }
+			calendarDiv.appendChild(div);
+		}
+		return;
+	}
 
-    for (let i = 1; i <= 30; i++) {
+	for (let i = 1; i <= 30; i++) {
 
-        const div = document.createElement("div");
-        div.classList.add("day");
+		const div = document.createElement("div");
+		div.classList.add("day");
 
-        if (viewYear === currentRep.year &&
-            viewMonth === currentRep.month &&
-            i === currentRep.day) {
-            div.classList.add("today");
-        }
+		if (viewYear === currentRep.year &&
+			viewMonth === currentRep.month &&
+			i === currentRep.day) {
+			div.classList.add("today");
+		}
 		
 		if((i-1)%10 == 4) {
 			div.classList.add("animal");
@@ -562,33 +592,43 @@ function renderCalendar() {
 			<div class="ephemeride"><a href="https://fr.wikipedia.org/wiki/${ephemerideWiki}">${ephemeride}</a></div>
 		`;
 		
-        calendarDiv.appendChild(div);
-    }
+		calendarDiv.appendChild(div);
+	}
+	
+	// set Url
+	{
+		const params = new URLSearchParams();
+		params.set("year", viewYear);
+		params.set("month", republicanMonthsURL[viewMonth]);
+		const newURL = `${window.location.pathname}?${params.toString()}`;
+		window.history.replaceState({}, "", newURL);
+	}
 }
 
 function goToday() {
-    todayDate = new Date();
-    currentRep = gregorianToRepublican(todayDate);
-    viewMonth = currentRep.month;
-    viewYear = currentRep.year;
-    renderCalendar();
+	todayDate = new Date();
+	currentRep = gregorianToRepublican(todayDate);
+	viewMonth = currentRep.month;
+	viewYear = currentRep.year;
+	renderCalendar();
 }
 
 function changeMonth(delta) {
-    viewMonth += delta;
+	viewMonth += delta;
 
-    if (viewMonth < 0) {
-        viewMonth = 12;
-        viewYear--;
-    }
-    if (viewMonth > 12) {
-        viewMonth = 0;
-        viewYear++;
-    }
+	if (viewMonth < 0) {
+		viewMonth = 12;
+		viewYear--;
+	}
+	if (viewMonth > 12) {
+		viewMonth = 0;
+		viewYear++;
+	}
 
-    renderCalendar();
+	renderCalendar();
 }
 
+readURLParams();
 renderCalendar();
 scrollToToday();
 
