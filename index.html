@@ -499,16 +499,20 @@ function readURLParams() {
 }
 
 	
-function setURLParams() 
+function setURLParams(pushHistory) 
 {
 	const params = new URLSearchParams();
 	params.set("year", viewYear);
 	params.set("month", republicanMonthsURL[viewMonth]);
 	const newURL = `${window.location.pathname}?${params.toString()}`;
-	window.history.replaceState({}, "", newURL);
+	if(pushHistory ) {
+		window.history.pushState({year: viewYear, month: viewMonth}, "", newURL);
+	} else {
+		window.history.replaceState({}, "", newURL);
+	}
 }
 	
-function renderCalendar() {
+function renderCalendar(pushHistory = true) {
 
 	const calendarDiv = document.getElementById("calendar");
 	calendarDiv.innerHTML = "";
@@ -539,7 +543,7 @@ function renderCalendar() {
 
 	document.getElementById("monthTitle").innerText = monthTitle
 
-	setURLParams();
+	setURLParams(pushHistory);
 	
 	if (viewMonth === 12) {
 		let maxDays = 5;
@@ -632,8 +636,13 @@ function changeMonth(delta) {
 }
 
 readURLParams();
-renderCalendar();
+renderCalendar(false);
 scrollToToday();
+
+window.addEventListener("popstate", () => {
+    readURLParams();
+    renderCalendar(false);
+});
 
 </script>
 
