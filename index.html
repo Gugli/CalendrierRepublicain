@@ -194,11 +194,18 @@ CALENDRIER RÉPUBLICAIN FRANÇAIS
 
 <div class="calendar" id="calendar"></div>
 
-<div class="footer-note">
-Liberté • Égalité • Fraternité
+<div class="footer-note" id="footer">
 </div>
 
 <script>
+
+const Rymes = [
+"Fraternité", "Pue-des-pieds", "Calamité", 
+"Re-liberté derrière", "Y'a plus'd'café", "C'est tout pété", 
+"Poisson-pané", "Mange ta purée", "Chaussettes trouées",
+"Chat échaudé", "Fromage râpé",  "Pain grillé",
+"Plutôt stylé", "Faut dériver", "Poil aux nénés", 
+]
 
 const republicanMonths = [
 "Vendémiaire","Brumaire","Frimaire",
@@ -378,14 +385,14 @@ const republicanDaysWiki = [
   "Gypse","Sel","Fer","Cuivre","Chat","Étain","Plomb","Zinc","Mercure","Crible",
 
   // Pluviôse (121–150)
-  "Lauréole","Mousse","Fragon","Perce-neige","Taureau","Laurier-tin","Amadouvier","Mézéréon","Peuplier","Cognée",
+  "Lauréole","Bryophyta","Fragon","Perce-neige","Taureau","Laurier-tin","Amadouvier","Mézéréon","Peuplier","Cognée",
   "Ellébore","Brocoli","Laurier","Avelinier","Vache","Buis","Lichen","Taxus","Pulmonaire","Serpette",
   "Thlaspi","Daphné_garou","Chiendent","Traînasse","Lièvre","Guède","Noisetier","Cyclamen","Chélidoine","Traîneau",
 
   // Ventôse (151–180)
   "Tussilage","Cornouiller","Violier","Troène","Bouc","Asaret","Alaterne","Violette","Marceau","Bêche",
-  "Narcisse","Orme","Fumeterre","Vélar","Chèvre","Épinard","Doronic","Mouron","Cerfeuil","Cordeau",
-  "Mandragore","Persil","Cochléaire","Pâquerette","Thon","Pissenlit","Sylvie","Capillaire","Frêne","Plantoir",
+  "Narcissus","Orme","Fumeterre","Vélar","Chèvre","Épinard","Doronic","Mouron_(flore)","Cerfeuil","Cordeau",
+  "Mandragore","Persil","Cochléaire","Pâquerette","Thon","Pissenlit","Anémone_sylvie","Capillaire_de_Montpellier","Frêne","Plantoir",
 
   // Germinal (181–210)
   "Primevère","Platane","Asperge","Tulipe","Poule","Blette","Bouleau","Jonquille","Aulne","Couvoir",
@@ -541,8 +548,11 @@ function renderCalendar(pushHistory = true) {
 
 	document.title = `Calendrier Républicain - ${todayTitle}`;
 
-	document.getElementById("monthTitle").innerText = monthTitle
+	document.getElementById("monthTitle").innerText = monthTitle;
 
+	const Ryme = Rymes[Math.floor(Math.random() * Rymes.length)];
+	document.getElementById("footer").innerText = "Liberté • Égalité • " + Ryme;
+	
 	setURLParams(pushHistory);
 	
 	if (viewMonth === 12) {
