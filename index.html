@@ -75,14 +75,19 @@ button:hover {
 	font-size: 15px;
 	filter: grayscale(30%);
 }
+
+.day-link::before {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  content: "🔗";
+  font-size: 15px;
+  cursor: pointer;
+}
+
 .ephemeride {
 	font-size: 12px;
 	margin-top: 4px;
-}
-
-.today {
-	border: 2px solid #d40000;
-	background: #ffe4e1;
 }
 
 .animal {
@@ -93,6 +98,11 @@ button:hover {
 .outil {
 	border: 1px solid #d4d400;
 	background: #ffffe1;
+}
+
+.today {
+	border: 2px solid #d40000;
+	background: #ffe4e1;
 }
 
 .footer-note {
@@ -333,9 +343,9 @@ const republicanDaysArticle = [
 "de la ","de la ","du ","du ","du ","de la ","de la ","de la ","du ","du ",
 
 /* Germinal */
-"de la ","du ","de la ","de la ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","de la ","de la ","de la ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","de la ","du ","du ","du ","de la ","de la ","de la ","du ","du ",
+"de la ","du ","de l'","de la ","de la ","de la ","du ","de la ","de l'","du ",
+"de la ","du ","de la ","du ","de l'","du ","de la ","de la ","du ","de la ",
+"du ","de la ","du ","de la ","du ","du ","de l'","de la ","de la ","du ",
 
 /* Floréal */
 "de la ","de la ","de la ","de la ","du ","de la ","de la ","de la ","du ","du ",
@@ -427,13 +437,21 @@ const republicanDaysWiki = [
 
 
 // Calcul phase lunaire (approximation fiable)
-function getMoonPhase(date) {
+function getMoonPhase(republicanYear, republicanMonth, republicanDay) {
 
+	const startDate = new Date(1792, 8, 22);
+	let totalDays = 0;
+	for (let y = 1; y < republicanYear; y++) {
+		totalDays += [3,7,11].includes(y) ? 366 : 365;
+	}
+	totalDays += republicanMonth * 30 + (republicanDay - 1);
+	const gregDate = new Date(startDate.getTime() + totalDays * 86400000);
+		
 	const lunarCycle = 29.53058867;
 	const knownNewMoon = new Date(Date.UTC(2000, 0, 6, 18, 14));
 	// Nouvelle lune de référence : 6 janvier 2000
 
-	const diffDays = (date - knownNewMoon) / (1000*60*60*24);
+	const diffDays = (gregDate - knownNewMoon) / (1000*60*60*24);
 	const phase = (diffDays % lunarCycle + lunarCycle) % lunarCycle;
 
 	if (phase < 1.84566) return "🌑";		// Nouvelle lune
@@ -492,6 +510,32 @@ let viewYear = currentRep.year;
 function readURLParams() {
 	const params = new URLSearchParams(window.location.search);
 
+	const dayStr = params.get("day");
+	if(dayStr) {
+		dayDate = new Date(dayStr);
+		if(!isNaN(dayDate)){
+			todayDate = dayDate;
+			currentRep = gregorianToRepublican(todayDate);
+			viewMonth = currentRep.month;
+			viewYear = currentRep.year;
+			return;
+		}
+	}
+	const dayRStr = params.get("dayR");
+	if(dayRStr) {
+		const dayRArray = dayRStr.split('-');
+		if(dayRArray.length == 3) {
+			const DD = parseInt(dayRArray[0]);
+			const MM = parseInt(dayRArray[1]);
+			const YYYY = parseInt(dayRArray[2]);
+			if(!isNaN(DD) && !isNaN(MM) && !isNaN(YYYY)) {
+				currentRep = { year: YYYY, month: MM, day: DD };
+				viewMonth = currentRep.month;
+				viewYear = currentRep.year;
+				return;
+			}
+		}
+	}
 	const y = parseInt(params.get("year"));
 	const m = params.get("month");
 
@@ -538,7 +582,12 @@ function renderCalendar(pushHistory = true) {
 	calendarDiv.appendChild(headerRow);
 
 	let iTodayDay = 30*currentRep.month + currentRep.day - 1;
-	let todayTitle = currentRep.day + " " + republicanMonths[currentRep.month] + ", jour " + republicanDaysArticle[iTodayDay] + republicanDays[iTodayDay] + " - An " + viewYear;
+	let todayTitle = "";
+	if (viewMonth === 12) {
+		todayTitle = sansculottides[currentRep.day-1] + " - An " + viewYear;
+	} else {
+		todayTitle = currentRep.day + " " + republicanMonths[currentRep.month] + ", jour " + republicanDaysArticle[iTodayDay] + republicanDays[iTodayDay] + " - An " + viewYear;
+	}
 
 	let monthTitle = republicanMonths[viewMonth] + " - An " + viewYear;
 	
@@ -569,8 +618,12 @@ function renderCalendar(pushHistory = true) {
 				div.classList.add("today");
 			}
 
+			const moon = getMoonPhase(viewYear, viewMonth, i);
+			
 			div.innerHTML = `
+				<a href="?dayR=${i}-${viewMonth}-${viewYear}"><div class="day-link"></div></a>
 				<div class="day-number">${i}</div>
+				<div class="moon">${moon}</div>
 				<div class="ephemeride"><a href="https://fr.wikipedia.org/wiki/Jour_compl%C3%A9mentaire">${sansculottides[i-1]}</a></div>
 			`;
 
@@ -601,18 +654,10 @@ function renderCalendar(pushHistory = true) {
 		const ephemeride = republicanDays[dayIndex];
 		const ephemerideWiki = republicanDaysWiki[dayIndex];
 		
-		
-		const startDate = new Date(1792, 8, 22);
-		let totalDays = 0;
-		for (let y = 1; y < viewYear; y++) {
-			totalDays += [3,7,11].includes(y) ? 366 : 365;
-		}
-		totalDays += viewMonth * 30 + (i - 1);
-
-		const gregDate = new Date(startDate.getTime() + totalDays * 86400000);
-		const moon = getMoonPhase(gregDate);
+		const moon = getMoonPhase(viewYear, viewMonth, i);
 
 		div.innerHTML = `
+			<a href="?dayR=${i}-${viewMonth}-${viewYear}"><div class="day-link"></div></a>
 			<div class="day-number">${i}</div>
 			<div class="moon">${moon}</div>
 			<div class="ephemeride"><a href="https://fr.wikipedia.org/wiki/${ephemerideWiki}">${ephemeride}</a></div>
