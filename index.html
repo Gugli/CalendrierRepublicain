@@ -38,6 +38,15 @@ button {
 	cursor: pointer;
 	font-family: inherit;
 }
+button#monthPrev::before {
+	content: '◀ Mois précédent';
+}
+button#monthNext::before {
+	content: 'Mois suivant ▶';
+}
+button#today::before{
+	content: 'Aujourd\'hui';
+}
 
 button:hover {
 	background: #a00000;
@@ -148,11 +157,18 @@ button:hover {
 		justify-content: center;
 		flex-wrap: wrap;
 		gap: 8px;
+		flex-direction: row;
 	}
 
 	button {
 		flex: 1 1 auto;
 		min-width: 110px;
+	}
+	button#monthPrev::before {
+		content: '◀';
+	}
+	button#monthNext::before {
+		content: '▶';
 	}
 
 	/* Calendrier en colonne unique */
@@ -197,9 +213,9 @@ CALENDRIER RÉPUBLICAIN FRANÇAIS
 <h2 id="monthTitle"></h2>
 
 <div class="nav">
-	<button onclick="changeMonth(-1)">◀ Mois précédent</button>
-	<button onclick="goToday()">Aujourd'hui</button>
-	<button onclick="changeMonth(1)">Mois suivant ▶</button>
+	<button id="monthPrev" onclick="changeMonth(-1)"></button>
+	<button id="today" onclick="goToday()"></button>
+	<button id="monthNext" onclick="changeMonth(1)"></button>
 </div>
 
 <div class="calendar" id="calendar"></div>
