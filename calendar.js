@@ -38,194 +38,6 @@ const sansculottides = [
 "Fête de la Révolution"
 ];
 
-// Ephémérides révolutionnaires (version simplifiée complète 360 jours)
-const republicanDays = [
-/* Vendémiaire */
-"Raisin","Safran","Châtaigne","Colchique","Cheval","Balsamine","Carotte","Amarante","Panais","Cuve",
-"Pomme de terre","Immortelle","Potiron","Réséda","Âne","Belle de nuit","Citrouille","Sarrasin","Tournesol","Pressoir",
-"Chanvre","Pêche","Navet","Amaryllis","Bœuf","Aubergine","Piment","Tomate","Orge","Tonneau",
-
-/* Brumaire */
-"Pomme","Céleri","Poire","Betterave","Oie","Héliotrope","Figue","Scorsonère","Alisier","Charrue",
-"Salsifis","Mâcre","Topinambour","Endive","Dindon","Chervis","Cresson","Dentelaire","Grenade","Herse",
-"Bacchante","Azerole","Garance","Orange","Faisan","Pistache","Macjonc","Coing","Cormier","Rouleau",
-
-/* Frimaire */
-"Raiponce","Turneps","Chicorée","Nèfle","Cochon","Mâche","Chou-fleur","Miel","Genièvre","Pioche",
-"Cire","Raifort","Cèdre","Sapin","Chevreuil","Ajonc","Cyprès","Lierre","Sabine","Hoyau",
-"Érable","Bruyère","Roseau","Oseille","Grillon","Pignon","Liège","Truffe","Olive","Pelle",
-
-/* Nivôse */
-"Tourbe","Houille","Bitume","Soufre","Chien","Lave","Terre végétale","Fumier","Salpêtre","Fléau",
-"Granit","Argile","Ardoise","Grès","Lapin","Silex","Marne","Pierre à chaux","Marbre","Van",
-"Pierre à plâtre","Sel","Fer","Cuivre","Chat","Étain","Plomb","Zinc","Mercure","Crible",
-
-/* Pluviôse */
-"Lauréole","Mousse","Fragon","Perce-neige","Taureau","Laurier-tin","Amadouvier","Mézéréon","Peuplier","Coignée",
-"Ellébore","Brocoli","Laurier","Avelinier","Vache","Buis","Lichen","If","Pulmonaire","Serpette",
-"Thlaspi","Thymelé","Chiendent","Trainasse","Lièvre","Guède","Noisetier","Cyclamen","Chélidoine","Traîneau",
-
-/* Ventôse */
-"Tussilage","Cornouiller","Violier","Troène","Bouc","Asaret","Alaterne","Violette","Marceau","Bêche",
-"Narcisse","Orme","Fumeterre","Vélar","Chèvre","Épinard","Doronic","Mouron","Cerfeuil","Cordeau",
-"Mandragore","Persil","Cochléaria","Pâquerette","Thon","Pissenlit","Sylvie","Capillaire","Frêne","Plantoir",
-
-/* Germinal */
-"Primevère","Platane","Asperge","Tulipe","Poule","Bette","Bouleau","Jonquille","Aulne","Couvoir",
-"Pervenche","Charme","Morille","Hêtre","Abeille","Laitue","Mélèze","Ciguë","Radis","Ruche",
-"Gainier","Romaine","Marronnier","Roquette","Pigeon","Lilas","Anémone","Pensée","Myrtille","Greffoir",
-
-/* Floréal */
-"Rose","Chêne","Fougère","Aubépine","Rossignol","Ancolie","Muguet","Champignon","Hyacinthe","Râteau",
-"Rhododendron","Sainfoin","Bâton-d'or","Chamerisier","Ver à soie","Consoude","Pimprenelle","Corbeille d'or","Arroche","Sarcloir",
-"Statice","Fritillaire","Bourrache","Valériane","Carpe","Fusain","Civette","Buglosse","Sénevé","Houlette",
-
-/* Prairial */
-"Luzerne","Hémérocalle","Trèfle","Angélique","Canard","Mélisse","Fromental","Martagon","Serpolet","Faux",
-"Fraise","Bétoine","Pois","Acacia","Caille","Œillet","Sureau","Pavot","Tilleul","Fourche",
-"Barbeau","Camomille","Chèvrefeuille","Caille-lait","Tanche","Jasmin","Verveine","Thym","Pivoine","Chariot",
-
-/* Messidor */
-"Seigle","Avoine","Oignon","Véronique","Mulet","Romarin","Concombre","Échalote","Absinthe","Faucille",
-"Coriandre","Artichaut","Girofle","Lavande","Chamois","Tabac","Groseille","Gesse","Cerise","Parc",
-"Menthe","Cumin","Haricot","Orcanète","Pintade","Sauge","Ail","Vesce","Blé","Chalémie",
-
-/* Thermidor */
-"Épeautre","Bouillon-blanc","Melon","Ivraie","Bélier","Prêle","Armoise","Carthame","Mûre","Arrosoir",
-"Panis","Salicorne","Abricot","Basilic","Brebis","Guimauve","Lin","Amande","Gentiane","Écluse",
-"Carline","Câprier","Lentille","Aunée","Loutre","Myrte","Colza","Lupin","Coton","Moulin",
-
-/* Fructidor */
-"Prune","Millet","Lycoperdon","Escourgeon","Saumon","Tubéreuse","Sucrion","Apocyn","Réglisse","Échelle",
-"Pastèque","Fenouil","Épine-vinette","Noix","Truite","Citron","Cardère","Nerprun","Tagette","Hotte",
-"Églantier","Noisette","Houblon","Sorgho","Écrevisse","Bigarade","Verge d'or","Maïs","Marron","Panier"
-];
-
-const republicanDaysArticle = [
-/* Vendémiaire */
-"du ","du ","de la ","de la ","du ","de la ","de la ","de l'","du ","de la ",
-"de la ","de l'","du ","de la ","de l'","de la ","de la ","du ","du ","du ",
-"du ","de la ","du ","de l'","du ","de l'","du ","de la ","de l'","du ",
-
-/* Brumaire */
-"de la ","du ","de la ","de la ","de l'","de l'","de la ","de la ","de l'","de la ",
-"du ","de la ","du ","de l'","du ","du ","du ","de la ","de la ","de la ",
-"de la ","de l'","de la ","de l'","du ","de la ","de la ","du ","du ","du ",
-
-/* Frimaire */
-"de la ","du ","de la ","de la ","du ","de la ","du ","du ","de la ","de la ",
-"de la ","du ","du ","du ","du ","de l'","du ","du ","de la ","du ",
-"de l'","de la ","du ","de l'","du ","du ","du ","de la ","de l'","de la ",
-
-/* Nivôse */
-"de la ","de la ","du ","du ","du ","de la ","de la ","du ","du ","du ",
-"du ","de l'","de l'","du ","du ","du ","de la ","de la ","du ","du ",
-"de la ","du ","du ","du ","du ","de l'","du ","du ","du ","du ",
-
-/* Pluviôse */
-"de la ","de la ","du ","du ","du ","du ","de l'","de la ","du ","de la ",
-"de l'","du ","du ","de l'","de la ","du ","du ","de l'","de la ","de la ",
-"du ","de la ","du ","de la ","du ","de la ","du ","du ","de la ","du ",
-
-/* Ventôse */
-"du ","du ","du ","du ","du ","de l'","de l'","de la ","du ","de la ",
-"du ","de l'","de la ","du ","de la ","de l'","du ","du ","du ","du ",
-"de la ","du ","du ","de la ","du ","du ","de la ","de la ","du ","du ",
-
-/* Germinal */
-"de la ","du ","de l'","de la ","de la ","de la ","du ","de la ","de l'","du ",
-"de la ","du ","de la ","du ","de l'","du ","de la ","de la ","du ","de la ",
-"du ","de la ","du ","de la ","du ","du ","de l'","de la ","de la ","du ",
-
-/* Floréal */
-"de la ","de la ","de la ","de la ","du ","de la ","de la ","de la ","du ","du ",
-"de la ","de la ","du ","de la ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","de la ","du ","du ","du ","de la ","de la ","de la ","du ","du ",
-
-/* Prairial */
-"de la ","de la ","de la ","de la ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","de la ","de la ","de la ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","de la ","du ","du ","du ","de la ","de la ","de la ","du ","du ",
-
-/* Messidor */
-"du ","de la ","du ","de la ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","de la ","de la ","de la ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","de la ","du ","du ","du ","de la ","de la ","de la ","du ","du ",
-
-/* Thermidor */
-"du ","de la ","de la ","du ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","de la ","de la ","de la ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","de la ","du ","du ","du ","de la ","de la ","de la ","du ","du ",
-
-/* Fructidor */
-"de la ","de la ","de la ","du ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","de la ","de la ","de la ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","de la ","du ","du ","du ","de la ","de la ","de la ","du ","du "
-];
-
-const republicanDaysWiki = [
-  // Vendémiaire (1–30)
-  "Raisin","Safran","Châtaigne","Colchique","Cheval","Balsamine","Carotte","Amarante","Panais","Cuve",
-  "Pomme_de_terre","Immortelle","Potiron","Réséda","Âne","Belle-de-nuit","Citrouille","Sarrasin","Tournesol","Pressoir",
-  "Chanvre","Pêche","Navet","Amaryllis","Bœuf","Aubergine","Piment","Tomate","Orge","Tonneau",
-
-  // Brumaire (31–60)
-  "Pomme","Céleri","Poire","Betterave","Oie","Héliotrope","Figue","Scorsonère","Alisier","Charrue",
-  "Salsifis","Mâcre","Topinambour","Endive","Dindon","Chervis","Cresson","Dentelaire","Grenade","Herse",
-  "Baccharis_halimifolia","Azérole","Garance","Orange","Faisan","Pistache","Gesse_tubéreuse","Coing","Cormier","Rouleau",
-
-  // Frimaire (61–90)
-  "Raiponce","Brassica_rapa","Chicorée","Nèfle","Cochon","Mâche","Chou-fleur","Miel","Juniperus_communis","Pioche",
-  "Cire","Raifort","Cèdre","Sapin","Chevreuil","Ajonc","Cyprès","Lierre_grimpant","Juniperus_sabina","Hoyau",
-  "Érable","Bruyère","Roseau","Oseille","Gryllidae","Pin_parasol","Chêne-liège","Truffe_(champignon)","Olive","Pelle_(outil)",
-
-  // Nivôse (91–120)
-  "Tourbe","Houille","Bitume","Soufre","Chien","Lave","Humus","Fumier","Salpêtre","Fléau_(agriculture)",
-  "Granit","Argile","Ardoise","Grès_(géologie)","Lapin","Silex","Marne_(géologie)","Calcaire","Marbre","Van_(agriculture)",
-  "Gypse","Sel","Fer","Cuivre","Chat","Étain","Plomb","Zinc","Mercure","Tamis",
-
-  // Pluviôse (121–150)
-  "Lauréole","Bryophyta","Fragon","Perce-neige","Taureau","Laurier-tin","Amadouvier","Mézéréon","Peuplier","Cognée",
-  "Ellébore","Brocoli","Laurier","Corylus_avellana","Vache","Buis","Lichen","Taxus","Pulmonaire","Serpette",
-  "Thlaspi","Daphné_garou","Chiendent","Renouée des oiseaux","Lièvre","Guède","Noisetier","Cyclamen","Chélidoine","Traîneau",
-
-  // Ventôse (151–180)
-  "Tussilage","Cornouiller","Violier","Troène_commun","Bouc","Asaret","Alaterne","Violette","Saule_marsault","Bêche",
-  "Narcissus","Orme","Fumeterre_officinale","Vélar","Chèvre","Épinard","Doronic","Mouron_(flore)","Cerfeuil","Cordeau",
-  "Mandragore","Persil","Cochléaire","Pâquerette","Thon","Pissenlit","Anémone_sylvie","Capillaire_de_Montpellier","Frêne","Plantoir",
-
-  // Germinal (181–210)
-  "Primevère","Platane","Asperge","Tulipe","Gallus_gallus_domesticus","Bette_(plante)","Bouleau","Narcissus_jonquilla","Aulne","Couvoir",
-  "Pervenche","Charme","Morille","Hêtre","Abeille","Laitue","Mélèze","Cigüe","Radis","Ruche",
-  "Gainier","Romaine","Marronnier","Roquette","Pigeon","Lilas","Anémone","Pensée","Myrtille","Greffoir",
-
-  // Floréal (211–240)
-  "Rose","Chêne","Fougère","Aubépine","Rossignol","Ancolie","Muguet","Champignon","Jacinthe","Râteau",
-  "Rhubarbe","Sainfoin","Solidago","Chamérisier","Ver_à_soie","Consoude","Pimprenelle","Corbeille_d'or","Arroche","Sarcloir",
-  "Statice","Fritillaire","Bourrache","Valériane","Carpe","Fusain","Ciboulette","Buglosse","Moutarde","Houlette",
-
-  // Prairial (241–270)
-  "Luzerne","Hémérocalle","Trèfle","Angélique","Canard","Mélisse","Fromental","Martagon","Serpolet","Faux",
-  "Fraise","Bétoine","Pois","Acacia","Caille","Œillet","Sureau","Pavot","Tilleul","Fourche",
-  "Bleuet","Camomille","Chèvrefeuille","Gaillet","Tanche","Jasmin","Verveine","Thym","Pivoine","Chariot",
-
-  // Messidor (271–300)
-  "Seigle","Avoine","Oignon","Véronique","Mulet","Romarin","Concombre","Échalote","Absinthe","Faucille",
-  "Coriandre","Artichaut","Giroflée","Lavande","Chamois","Tabac","Groseille","Gesse","Cerise","Parc",
-  "Menthe","Cumin","Haricot","Orcanète","Pintade","Sauge","Ail","Vesce","Blé","Chalemie",
-
-  // Thermidor (301–330)
-  "Épeautre","Bouillon-blanc","Melon","Ivraie","Bélier","Prêle","Armoise","Carthame","Mûre","Arrosoir",
-  "Panic","Salicorne","Abricot","Basilic","Brebis","Guimauve","Lin","Amande","Gentiane","Écluse",
-  "Carline","Câprier","Lentille","Aunée","Loutre","Myrte","Colza","Lupin","Coton","Moulin",
-
-  // Fructidor (331–360)
-  "Prune","Millet","Vesse-de-loup","Escourgeon","Saumon","Tubéreuse","Sucrion","Asclépiade","Réglisse","Échelle",
-  "Pastèque","Fenouil","Épine-vinette","Noix","Truite","Citron","Cardère","Nerprun","Tagette","Hotte",
-  "Églantier","Noisette","Houblon","Sorgho","Écrevisse","Bigarade","Verge_d'or","Maïs","Marron","Panier"
-];
-
-
 // Calcul phase lunaire (approximation fiable)
 function getMoonPhase(republicanYear, republicanMonth, republicanDay) {
 
@@ -375,7 +187,8 @@ function renderCalendar(pushHistory = true) {
 	if (viewMonth === 12) {
 		todayTitle = sansculottides[currentRep.day-1] + " - An " + viewYear;
 	} else {
-		todayTitle = currentRep.day + " " + republicanMonths[currentRep.month] + ", jour " + republicanDaysArticle[iTodayDay] + republicanDays[iTodayDay] + " - An " + viewYear;
+		const todayDay = republicanDaysData[iTodayDay];
+		todayTitle = currentRep.day + " " + republicanMonths[currentRep.month] + ", jour " + todayDay.article + todayDay.name + " - An " + viewYear;
 	}
 
 	let monthTitle = republicanMonths[viewMonth] + " - An " + viewYear;
@@ -440,16 +253,15 @@ function renderCalendar(pushHistory = true) {
 		}
 
 		const dayIndex = viewMonth * 30 + (i - 1);
-		const ephemeride = republicanDays[dayIndex];
-		const ephemerideWiki = republicanDaysWiki[dayIndex];
-		
+		const dayData = republicanDaysData[dayIndex];
+
 		const moon = getMoonPhase(viewYear, viewMonth, i);
 
 		div.innerHTML = `
 			<a href="?dayR=${i}-${viewMonth}-${viewYear}"><div class="day-link"></div></a>
 			<div class="day-number">${i}</div>
 			<div class="moon">${moon}</div>
-			<div class="ephemeride"><a href="https://fr.wikipedia.org/wiki/${ephemerideWiki}">${ephemeride}</a></div>
+			<div class="ephemeride"><a href="https://fr.wikipedia.org/wiki/${dayData.wiki}">${dayData.name}</a></div>
 		`;
 		
 		calendarDiv.appendChild(div);
