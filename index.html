@@ -220,17 +220,19 @@ CALENDRIER RÉPUBLICAIN FRANÇAIS
 
 <div class="calendar" id="calendar"></div>
 
-<div class="footer-note" id="footer">
-</div>
+<div class="footer-note" id="footer"></div>
+
+<div class="debug" id="debug"></div>
 
 <script>
 
 const Rymes = [
-"Fraternité", "Pue-des-pieds", "Calamité", 
+"Fraternité", "Pue-des-pieds", "Calamité", "Saumon fumé",
 "Re-liberté derrière", "Y'a plus'd'café", "C'est tout pété", 
 "Poisson-pané", "Mange ta purée", "Chaussettes trouées",
 "Chat échaudé", "Fromage râpé",  "Pain grillé",
 "Plutôt stylé", "Faut dériver", "Poil aux nénés", 
+"C'est plus c'que c'était"
 ]
 
 const republicanMonths = [
@@ -329,34 +331,34 @@ const republicanDays = [
 
 const republicanDaysArticle = [
 /* Vendémiaire */
-"du ","du ","de la ","de la ","du ","de la ","de la ","de la ","du ","du ",
-"de la ","de la ","du ","de la ","de l'","de la ","de la ","du ","du ","du ",
-"du ","de la ","de la ","de l'","du ","de la ","du ","de la ","du ","du ",
+"du ","du ","de la ","de la ","du ","de la ","de la ","de l'","du ","de la ",
+"de la ","de l'","du ","de la ","de l'","de la ","de la ","du ","du ","du ",
+"du ","de la ","du ","de l'","du ","de l'","du ","de la ","de l'","du ",
 
 /* Brumaire */
-"de la ","du ","de la ","de la ","de l'","de la ","de la ","de la ","du ","du ",
-"de la ","de la ","de la ","de la ","du ","du ","de la ","de la ","de la ","du ",
-"de la ","de la ","de la ","du ","du ","de la ","de la ","de la ","du ","du ",
+"de la ","du ","de la ","de la ","de l'","de l'","de la ","de la ","de l'","de la ",
+"du ","de la ","du ","de l'","du ","du ","du ","de la ","de la ","de la ",
+"de la ","de l'","de la ","de l'","du ","de la ","de la ","du ","du ","du ",
 
 /* Frimaire */
-"de la ","du ","de la ","de la ","du ","de la ","de la ","de la ","de la ","du ",
-"de la ","du ","de la ","du ","du ","de la ","de la ","de la ","du ","du ",
-"de la ","de la ","de la ","du ","du ","de la ","du ","de la ","de la ","du ",
+"de la ","du ","de la ","de la ","du ","de la ","du ","du ","de la ","de la ",
+"de la ","du ","du ","du ","du ","de l'","du ","du ","de la ","du ",
+"de l'","de la ","du ","de l'","du ","du ","du ","de la ","de l'","de la ",
 
 /* Nivôse */
-"de la ","de la ","de la ","du ","du ","de la ","de la ","de la ","du ","du ",
-"de la ","de la ","de la ","du ","du ","de la ","de la ","de la ","du ","du ",
-"de la ","de la ","du ","du ","du ","de la ","de la ","de la ","du ","du ",
+"de la ","de la ","du ","du ","du ","de la ","de la ","du ","du ","du ",
+"du ","de l'","de l'","du ","du ","du ","de la ","de la ","du ","du ",
+"de la ","du ","du ","du ","du ","de l'","du ","du ","du ","du ",
 
 /* Pluviôse */
-"de la ","de la ","de la ","du ","du ","de la ","de la ","de la ","du ","du ",
-"de la ","de la ","de la ","du ","du ","de la ","de la ","de la ","du ","du ",
-"de la ","de la ","du ","du ","du ","de la ","de la ","de la ","du ","du ",
+"de la ","de la ","du ","du ","du ","du ","de l'","de la ","du ","de la ",
+"de l'","du ","du ","de l'","de la ","du ","du ","de l'","de la ","de la ",
+"du ","de la ","du ","de la ","du ","de la ","du ","du ","de la ","du ",
 
 /* Ventôse */
-"de la ","de la ","de la ","du ","du ","de la ","de la ","de la ","du ","du ",
-"de la ","de la ","de la ","du ","du ","de la ","de la ","de la ","du ","du ",
-"de la ","de la ","du ","du ","du ","de la ","de la ","de la ","du ","du ",
+"du ","du ","du ","du ","du ","de l'","de l'","de la ","du ","de la ",
+"du ","de l'","de la ","du ","de la ","de l'","du ","du ","du ","du ",
+"de la ","du ","du ","de la ","du ","du ","de la ","de la ","du ","du ",
 
 /* Germinal */
 "de la ","du ","de l'","de la ","de la ","de la ","du ","de la ","de l'","du ",
@@ -365,7 +367,7 @@ const republicanDaysArticle = [
 
 /* Floréal */
 "de la ","de la ","de la ","de la ","du ","de la ","de la ","de la ","du ","du ",
-"de la ","de la ","de la ","de la ","du ","de la ","de la ","de la ","de la ","du ",
+"de la ","de la ","du ","de la ","du ","de la ","de la ","de la ","de la ","du ",
 "de la ","de la ","du ","du ","du ","de la ","de la ","de la ","du ","du ",
 
 /* Prairial */
@@ -398,36 +400,36 @@ const republicanDaysWiki = [
   // Brumaire (31–60)
   "Pomme","Céleri","Poire","Betterave","Oie","Héliotrope","Figue","Scorsonère","Alisier","Charrue",
   "Salsifis","Mâcre","Topinambour","Endive","Dindon","Chervis","Cresson","Dentelaire","Grenade","Herse",
-  "Bacchante","Azérole","Garance","Orange","Faisan","Pistache","Macjonc","Coing","Cormier","Rouleau",
+  "Baccharis_halimifolia","Azérole","Garance","Orange","Faisan","Pistache","Gesse_tubéreuse","Coing","Cormier","Rouleau",
 
   // Frimaire (61–90)
-  "Raiponce","Turneps","Chicorée","Nèfle","Cochon","Mâche","Chou-fleur","Miel","Genièvre","Pioche",
-  "Cire","Raifort","Cèdre","Sapin","Chevreuil","Ajonc","Cyprès","Lierre","Sabine","Hoyau",
-  "Érable_sucré","Bruyère","Roseau","Oseille","Grillon","Pignon","Liège","Truffe","Olive","Pelle",
+  "Raiponce","Brassica_rapa","Chicorée","Nèfle","Cochon","Mâche","Chou-fleur","Miel","Juniperus_communis","Pioche",
+  "Cire","Raifort","Cèdre","Sapin","Chevreuil","Ajonc","Cyprès","Lierre_grimpant","Juniperus_sabina","Hoyau",
+  "Érable","Bruyère","Roseau","Oseille","Gryllidae","Pin_parasol","Chêne-liège","Truffe_(champignon)","Olive","Pelle_(outil)",
 
   // Nivôse (91–120)
-  "Tourbe","Houille","Bitume","Soufre","Chien","Lave","Humus","Fumier","Salpêtre","Fléau",
-  "Granit","Argile","Ardoise","Grès","Lapin","Silex","Marne","Calcaire","Marbre","Van",
-  "Gypse","Sel","Fer","Cuivre","Chat","Étain","Plomb","Zinc","Mercure","Crible",
+  "Tourbe","Houille","Bitume","Soufre","Chien","Lave","Humus","Fumier","Salpêtre","Fléau_(agriculture)",
+  "Granit","Argile","Ardoise","Grès_(géologie)","Lapin","Silex","Marne_(géologie)","Calcaire","Marbre","Van_(agriculture)",
+  "Gypse","Sel","Fer","Cuivre","Chat","Étain","Plomb","Zinc","Mercure","Tamis",
 
   // Pluviôse (121–150)
   "Lauréole","Bryophyta","Fragon","Perce-neige","Taureau","Laurier-tin","Amadouvier","Mézéréon","Peuplier","Cognée",
-  "Ellébore","Brocoli","Laurier","Avelinier","Vache","Buis","Lichen","Taxus","Pulmonaire","Serpette",
-  "Thlaspi","Daphné_garou","Chiendent","Traînasse","Lièvre","Guède","Noisetier","Cyclamen","Chélidoine","Traîneau",
+  "Ellébore","Brocoli","Laurier","Corylus_avellana","Vache","Buis","Lichen","Taxus","Pulmonaire","Serpette",
+  "Thlaspi","Daphné_garou","Chiendent","Renouée des oiseaux","Lièvre","Guède","Noisetier","Cyclamen","Chélidoine","Traîneau",
 
   // Ventôse (151–180)
-  "Tussilage","Cornouiller","Violier","Troène","Bouc","Asaret","Alaterne","Violette","Marceau","Bêche",
-  "Narcissus","Orme","Fumeterre","Vélar","Chèvre","Épinard","Doronic","Mouron_(flore)","Cerfeuil","Cordeau",
+  "Tussilage","Cornouiller","Violier","Troène_commun","Bouc","Asaret","Alaterne","Violette","Saule_marsault","Bêche",
+  "Narcissus","Orme","Fumeterre_officinale","Vélar","Chèvre","Épinard","Doronic","Mouron_(flore)","Cerfeuil","Cordeau",
   "Mandragore","Persil","Cochléaire","Pâquerette","Thon","Pissenlit","Anémone_sylvie","Capillaire_de_Montpellier","Frêne","Plantoir",
 
   // Germinal (181–210)
-  "Primevère","Platane","Asperge","Tulipe","Poule","Blette","Bouleau","Jonquille","Aulne","Couvoir",
+  "Primevère","Platane","Asperge","Tulipe","Gallus_gallus_domesticus","Bette_(plante)","Bouleau","Narcissus_jonquilla","Aulne","Couvoir",
   "Pervenche","Charme","Morille","Hêtre","Abeille","Laitue","Mélèze","Cigüe","Radis","Ruche",
   "Gainier","Romaine","Marronnier","Roquette","Pigeon","Lilas","Anémone","Pensée","Myrtille","Greffoir",
 
   // Floréal (211–240)
   "Rose","Chêne","Fougère","Aubépine","Rossignol","Ancolie","Muguet","Champignon","Jacinthe","Râteau",
-  "Rhubarbe","Sainfoin","Bâton_d'or","Chamérisier","Ver_à_soie","Consoude","Pimprenelle","Corbeille_d'or","Arroche","Sarcloir",
+  "Rhubarbe","Sainfoin","Solidago","Chamérisier","Ver_à_soie","Consoude","Pimprenelle","Corbeille_d'or","Arroche","Sarcloir",
   "Statice","Fritillaire","Bourrache","Valériane","Carpe","Fusain","Ciboulette","Buglosse","Moutarde","Houlette",
 
   // Prairial (241–270)
@@ -565,6 +567,21 @@ function readURLParams() {
 	}
 }
 
+function debug() 
+{
+	const debugDiv = document.getElementById("debug");
+	debugDiv.innerHTML = "";
+	
+	for (let i = 6*30 + 10; i < 30*12; i++) {
+		const article = republicanDaysArticle[i];
+		const ephemeride = republicanDays[i];
+		const wiki = republicanDaysWiki[i];
+		debugDiv.innerHTML += `${article}<a href="https://fr.wikipedia.org/wiki/${wiki}">${ephemeride}</a></br>`;
+		if(i%10 == 9) debugDiv.innerHTML += `</br>`;
+		if(i%30 == 29) debugDiv.innerHTML += `</br>`;
+	}
+	
+}
 	
 function setURLParams(pushHistory) 
 {
@@ -580,6 +597,8 @@ function setURLParams(pushHistory)
 }
 	
 function renderCalendar(pushHistory = true) {
+
+	debug();
 
 	const calendarDiv = document.getElementById("calendar");
 	calendarDiv.innerHTML = "";
