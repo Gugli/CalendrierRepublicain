@@ -28,15 +28,9 @@ const decadeNames = [
 "Sextidi","Septidi","Octidi","Nonidi","Décadi"
 ];
 
-// Sans-culottides
-const sansculottides = [
-"Fête de la Vertu",
-"Fête du Génie",
-"Fête du Travail",
-"Fête de l'Opinion",
-"Fête des Récompenses",
-"Fête de la Révolution"
-];
+function getRepublicanDay(month, day) {
+	return republicanDaysData.find(d => d.month === month && d.day === day);
+}
 
 // Calcul phase lunaire (approximation fiable)
 function getMoonPhase(republicanYear, republicanMonth, republicanDay) {
@@ -182,12 +176,11 @@ function renderCalendar(pushHistory = true) {
 
 	calendarDiv.appendChild(headerRow);
 
-	let iTodayDay = 30*currentRep.month + currentRep.day - 1;
+	const todayDay = getRepublicanDay(currentRep.month, currentRep.day);
 	let todayTitle = "";
-	if (viewMonth === 12) {
-		todayTitle = sansculottides[currentRep.day-1] + " - An " + viewYear;
+	if (currentRep.month === 12) {
+		todayTitle = todayDay.name + " - An " + viewYear;
 	} else {
-		const todayDay = republicanDaysData[iTodayDay];
 		todayTitle = currentRep.day + " " + republicanMonths[currentRep.month] + ", jour " + todayDay.article + todayDay.name + " - An " + viewYear;
 	}
 
@@ -220,13 +213,14 @@ function renderCalendar(pushHistory = true) {
 				div.classList.add("today");
 			}
 
+			const dayData = getRepublicanDay(12, i);
 			const moon = getMoonPhase(viewYear, viewMonth, i);
 			
 			div.innerHTML = `
 				<a href="?dayR=${i}-${viewMonth}-${viewYear}"><div class="day-link"></div></a>
 				<div class="day-number">${i}</div>
 				<div class="moon">${moon}</div>
-				<div class="ephemeride"><a href="https://fr.wikipedia.org/wiki/Jour_compl%C3%A9mentaire">${sansculottides[i-1]}</a></div>
+				<div class="ephemeride"><a href="https://fr.wikipedia.org/wiki/${dayData.wiki}">${dayData.name}</a></div>
 			`;
 
 			calendarDiv.appendChild(div);
@@ -252,8 +246,7 @@ function renderCalendar(pushHistory = true) {
 			div.classList.add("outil");
 		}
 
-		const dayIndex = viewMonth * 30 + (i - 1);
-		const dayData = republicanDaysData[dayIndex];
+		const dayData = getRepublicanDay(viewMonth, i);
 
 		const moon = getMoonPhase(viewYear, viewMonth, i);
 

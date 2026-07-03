@@ -370,4 +370,11 @@ const republicanDaysData = [
 	{"month":11,"day":28,"name":"Maïs","article":"de la ","wiki":"Maïs"},
 	{"month":11,"day":29,"name":"Marron","article":"du ","wiki":"Marron"},
 	{"month":11,"day":30,"name":"Panier","article":"du ","wiki":"Panier"},
+	
+	{"month":12,"day":1,"name":"Fête de la Vertu","article":"","wiki":"Jour_complémentaire"},
+	{"month":12,"day":2,"name":"Fête du Génie","article":"","wiki":"Jour_complémentaire"},
+	{"month":12,"day":3,"name":"Fête du Travail","article":"","wiki":"Jour_complémentaire"},
+	{"month":12,"day":4,"name":"Fête de l'Opinion","article":"","wiki":"Jour_complémentaire"},
+	{"month":12,"day":5,"name":"Fête des Récompenses","article":"","wiki":"Jour_complémentaire"},
+	{"month":12,"day":6,"name":"Fête de la Révolution","article":"","wiki":"Jour_complémentaire"},
 ];
