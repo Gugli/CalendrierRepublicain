@@ -181,7 +181,8 @@ function renderCalendar(pushHistory = true) {
 	if (currentRep.month === 12) {
 		todayTitle = todayDay.name + " - An " + viewYear;
 	} else {
-		todayTitle = currentRep.day + " " + republicanMonths[currentRep.month] + ", jour " + todayDay.article + todayDay.name + " - An " + viewYear;
+		const decadeDay = decadeNames[(currentRep.day - 1) % 10];
+		todayTitle = decadeDay + " " + currentRep.day + " " + republicanMonths[currentRep.month] +  " de l'an " + viewYear + ", jour " + todayDay.article + todayDay.name ;
 	}
 
 	let monthTitle = republicanMonths[viewMonth] + " - An " + viewYear;
