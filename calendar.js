@@ -32,14 +32,19 @@ function getRepublicanDay(month, day) {
 	return republicanDaysData.find(d => d.month === month && d.day === day);
 }
 
+function amountOfDaysUntilYearStart(republicanYear) {
+	const years = republicanYear - 1;
+	var numberOfDaysSextile = 365 * years;
+	numberOfDaysSextile += Math.floor(years / 4);
+	numberOfDaysSextile -= Math.floor(years / 100);
+	numberOfDaysSextile += Math.floor(years / 400);
+	return numberOfDaysSextile;
+}
+
 // Calcul phase lunaire (approximation fiable)
 function getMoonPhase(republicanYear, republicanMonth, republicanDay) {
-
 	const startDate = new Date(1792, 8, 22);
-	let totalDays = 0;
-	for (let y = 1; y < republicanYear; y++) {
-		totalDays += [3,7,11].includes(y) ? 366 : 365;
-	}
+	let totalDays = amountOfDaysUntilYearStart(republicanYear);
 	totalDays += republicanMonth * 30 + (republicanDay - 1);
 	const gregDate = new Date(startDate.getTime() + totalDays * 86400000);
 		
@@ -72,6 +77,8 @@ function scrollToToday() {
 
 // Base conversion simplifiée
 function gregorianToRepublican(date) {
+	// Applying the Romme system as proposed by Charles Romme
+	// https://fr.wikipedia.org/wiki/Calendrier_r%C3%A9publicain#Projet_de_r%C3%A9forme_pr%C3%A9par%C3%A9_par_Romme
 	const startDate = Date.UTC(1792, 8, 22);
 	const utcDate = Date.UTC(
 		date.getFullYear(),
@@ -82,10 +89,16 @@ function gregorianToRepublican(date) {
 	const diffTime = utcDate - startDate;
 	const diffDays = Math.floor(diffTime / (1000*60*60*24));
 
-	const republicanYear = Math.floor(diffDays / 365.25) + 1;
-	let dayOfYear = Math.floor(diffDays % 365.25);
+	// First we calculate the republican year, then compute the number of days since the beginning of the year
+	var republicanYear = Math.floor(diffDays / 365.25) + 1;
+	var daysSinceYear = amountOfDaysUntilYearStart(republicanYear);
 
-	if (dayOfYear < 0) dayOfYear += 365;
+	if (diffDays < daysSinceYear) {
+		// correction if bad approximation
+		republicanYear -= 1;
+		daysSinceYear = amountOfDaysUntilYearStart(republicanYear);
+	}
+	const dayOfYear = diffDays - daysSinceYear;
 
 	let month = Math.floor(dayOfYear / 30);
 	let day = (dayOfYear % 30) + 1;
@@ -181,8 +194,8 @@ function renderCalendar(pushHistory = true) {
 	if (currentRep.month === 12) {
 		todayTitle = todayDay.name + " - An " + viewYear;
 	} else {
-		const decadeDay = decadeNames[(currentRep.day - 1) % 10];
-		todayTitle = decadeDay + " " + currentRep.day + " " + republicanMonths[currentRep.month] +  " de l'an " + viewYear + ", jour " + todayDay.article + todayDay.name ;
+		const decadeDay = decadeNames[(currentRep.day - 1) % 10].toLowerCase();
+		todayTitle = decadeDay + " " + currentRep.day + " " + republicanMonths[currentRep.month].toLowerCase() +  " de l'an " + viewYear + ", jour " + todayDay.article + todayDay.name.toLowerCase() ;
 	}
 
 	let monthTitle = republicanMonths[viewMonth] + " - An " + viewYear;
@@ -202,7 +215,7 @@ function renderCalendar(pushHistory = true) {
 	
 	if (viewMonth === 12) {
 		let maxDays = 5;
-		if (viewYear % 4 === 0) maxDays = 6;
+		if (viewYear % 4 === 0 && viewYear % 100 !== 0 || viewYear % 400 === 0) maxDays = 6;
 
 		for (let i = 1; i <= maxDays; i++) {
 			const div = document.createElement("div");
