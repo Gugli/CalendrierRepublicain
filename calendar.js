@@ -111,7 +111,13 @@ function gregorianToRepublican(date) {
 	return { year: republicanYear, month, day };
 }
 
-let todayDate = new Date();
+function getTodayDate() {
+	let date = new Date();
+	///// HACK FOR A FEW DAYS /////// GET BACK IN TIME 3 DAYS
+	return new Date(date.getTime() - 86400000 * 3);
+}
+
+let todayDate = getTodayDate();
 let currentRep = gregorianToRepublican(todayDate);
 let viewMonth = currentRep.month;
 let viewYear = currentRep.year;
@@ -276,7 +282,7 @@ function renderCalendar(pushHistory = true) {
 }
 
 function goToday() {
-	todayDate = new Date();
+	todayDate = getTodayDate();
 	currentRep = gregorianToRepublican(todayDate);
 	viewMonth = currentRep.month;
 	viewYear = currentRep.year;
