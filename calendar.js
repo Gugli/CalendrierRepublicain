@@ -112,9 +112,7 @@ function gregorianToRepublican(date) {
 }
 
 function getTodayDate() {
-	let date = new Date();
-	///// HACK FOR A FEW DAYS /////// GET BACK IN TIME 3 DAYS
-	return new Date(date.getTime() - 86400000 * 3);
+	return new Date();
 }
 
 let todayDate = getTodayDate();
