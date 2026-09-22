@@ -90,7 +90,7 @@ function gregorianToRepublican(date) {
 	const diffDays = Math.floor(diffTime / (1000*60*60*24));
 
 	// First we calculate the republican year, then compute the number of days since the beginning of the year
-	var republicanYear = Math.floor(diffDays / 365.25) + 1;
+	var republicanYear = Math.floor(diffDays / 365) + 1;
 	var daysSinceYear = amountOfDaysUntilYearStart(republicanYear);
 
 	if (diffDays < daysSinceYear) {
